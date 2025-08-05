@@ -1,37 +1,59 @@
-dicionario_ecommerce = {
-'livros': {
-'a': 50.0, 
-'b': 80.0, 
-'c': 100.0
-},
+dados = {}
 
- 'tablets': {
- 'd': 1.000, 
- 'e': 2.000, 
- 'f': 3.000
- },
+print('Cadastre-se: ')
 
-'fones_de_ouvido': {
-'g': 80.0, 
-'h': 100.0, 
-'i': 150.00
-}
-}
-print (dicionario_ecommerce)
+nome1  = input('Nome: ')
+idade1 = int(input('Idade: '))
+senha1 = input('Senha:')
+
+nome2  = input('Nome: ')
+idade2 = int(input('Idade: '))
+senha2 = input('Senha:')
+
+dados['nomes'] = [nome1,nome2]
+dados['idades'] = [idade1, idade2]
+dados['senhas'] = [senha1, senha2]
 
 
-seção1 = input('seção:')
-seção2 = input ('seção:')
-seção3 = input ('seção:')
+print('DADOS CADASTRADOS: ', dados)
 
-produto1 = input ('digite o produto:')
-produto2 = input ('digite o produto:')
-produto3 = input ('digite o produto:')
+# ------------
 
-carrinho = [produto1, produto2, produto3]
-valores =[dicionario_ecommerce[seção1][produto1], dicionario_ecommerce[seção2][produto2], dicionario_ecommerce[seção3][produto3]]
-soma = sum (valores)
 
-print (carrinho)
-print ('R$', soma)
+login = input('Login:  ')
+senha_login = input('Senha de login: ')
 
+if login in dados['nomes'] and senha_login in dados['senhas']:
+    print('''Tipos de quartos 
+        1 - Simples: R$ 100,00 por dia.
+        2 - Duplo: R$ 150,00 por dia.
+        3 - Luxo: R$ 250,00 por dia.
+        ''')
+
+    quartos =  ['',100.0,150.0,250.0]
+    nomes_quartos = ['', 'Simples', 'Duplo','Luxo']
+
+    quarto1 = int(input(f'Escolha o quarto {nome1} pelo ID 1 - 2 -3'))
+    quant_dias1 = int(input(f'Quantidade Dias do {nome1}: '))
+    calculo_1 = quartos[quarto1] * quant_dias1
+
+    print(f'O cliente {nome1}, escolheu o quarto{nomes_quartos[quarto1]}')
+    print(f'Total -  cliente {nome1}, R$ {calculo_1}')
+   
+    dados['quartos'] = [quartos[quarto1]]
+  
+
+    quarto2 = int(input(f'Escolha o quarto {nome2} pelo ID 1 - 2 -3'))
+    quant_dias2 = int(input(f'Quantidade Dias do {nome2}: '))
+
+    calculo_2 = quartos[quarto2] * quant_dias2
+    print(f'O cliente {nome1}, escolheu o quarto{nomes_quartos[quarto1]}')   
+    print(f'Total -  cliente {nome2}, R$ {calculo_2}')
+
+    dados['quartos'] = [quartos[quarto1]]
+    dados['entradas'] = [calculo_1,calculo_2]
+
+    print('DADOS CADASTRADOS:', dados)
+
+else:
+    print('Você digitou algo errado, tente novamente')    
